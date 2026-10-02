@@ -1,0 +1,21 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "data-factory-glob-dev"
+		},
+		"LS_KeyVault_properties_typeProperties_baseUrl": {
+			"value": "https://kv-caresyncdev1301.vault.azure.net/"
+		},
+		"ls_adls_gen2_properties_typeProperties_url": {
+			"value": "https://adlsglobstorageaccdev.dfs.core.windows.net/"
+		},
+		"containerUri": {
+			"value": ""
+		},
+		"containerSasToken": {
+			"value": ""
+		}
+	}
+}
