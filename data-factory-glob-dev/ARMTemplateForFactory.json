@@ -7,13 +7,29 @@
 			"metadata": "Data Factory name",
 			"defaultValue": "data-factory-glob-dev"
 		},
-		"LS_KeyVault_properties_typeProperties_baseUrl": {
+		"LS_PostgreSql_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'LS_PostgreSql'"
+		},
+		"LS_PostgreSql_properties_typeProperties_server": {
 			"type": "string",
-			"defaultValue": "https://kv-caresyncdev1301.vault.azure.net/"
+			"defaultValue": "ep-dark-rain-azys49f0-pooler.c-3.ap-southeast-1.aws.neon.tech"
+		},
+		"LS_PostgreSql_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "neondb"
+		},
+		"LS_PostgreSql_properties_typeProperties_username": {
+			"type": "string",
+			"defaultValue": "neondb_owner"
 		},
 		"ls_adls_gen2_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://adlsglobstorageaccdev.dfs.core.windows.net/"
+		},
+		"ls_key_vault_properties_typeProperties_baseUrl": {
+			"type": "string",
+			"defaultValue": "https://kv-caresyncdev1301.vault.azure.net/"
 		}
 	},
 	"variables": {
@@ -21,14 +37,23 @@
 	},
 	"resources": [
 		{
-			"name": "[concat(parameters('factoryName'), '/LS_KeyVault')]",
+			"name": "[concat(parameters('factoryName'), '/LS_PostgreSql')]",
 			"type": "Microsoft.DataFactory/factories/linkedServices",
 			"apiVersion": "2018-06-01",
 			"properties": {
 				"annotations": [],
-				"type": "AzureKeyVault",
+				"type": "PostgreSqlV2",
 				"typeProperties": {
-					"baseUrl": "[parameters('LS_KeyVault_properties_typeProperties_baseUrl')]"
+					"server": "[parameters('LS_PostgreSql_properties_typeProperties_server')]",
+					"port": 5432,
+					"database": "[parameters('LS_PostgreSql_properties_typeProperties_database')]",
+					"username": "[parameters('LS_PostgreSql_properties_typeProperties_username')]",
+					"password": {
+						"type": "SecureString",
+						"value": "[parameters('LS_PostgreSql_password')]"
+					},
+					"sslMode": 2,
+					"authenticationType": "Basic"
 				}
 			},
 			"dependsOn": []
@@ -42,6 +67,19 @@
 				"type": "AzureBlobFS",
 				"typeProperties": {
 					"url": "[parameters('ls_adls_gen2_properties_typeProperties_url')]"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ls_key_vault')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureKeyVault",
+				"typeProperties": {
+					"baseUrl": "[parameters('ls_key_vault_properties_typeProperties_baseUrl')]"
 				}
 			},
 			"dependsOn": []

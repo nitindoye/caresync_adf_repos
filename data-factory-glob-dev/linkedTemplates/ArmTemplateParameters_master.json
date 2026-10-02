@@ -5,11 +5,23 @@
 		"factoryName": {
 			"value": "data-factory-glob-dev"
 		},
-		"LS_KeyVault_properties_typeProperties_baseUrl": {
-			"value": "https://kv-caresyncdev1301.vault.azure.net/"
+		"LS_PostgreSql_password": {
+			"value": ""
+		},
+		"LS_PostgreSql_properties_typeProperties_server": {
+			"value": "ep-dark-rain-azys49f0-pooler.c-3.ap-southeast-1.aws.neon.tech"
+		},
+		"LS_PostgreSql_properties_typeProperties_database": {
+			"value": "neondb"
+		},
+		"LS_PostgreSql_properties_typeProperties_username": {
+			"value": "neondb_owner"
 		},
 		"ls_adls_gen2_properties_typeProperties_url": {
 			"value": "https://adlsglobstorageaccdev.dfs.core.windows.net/"
+		},
+		"ls_key_vault_properties_typeProperties_baseUrl": {
+			"value": "https://kv-caresyncdev1301.vault.azure.net/"
 		},
 		"containerUri": {
 			"value": ""
