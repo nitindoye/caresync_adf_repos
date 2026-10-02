@@ -20,9 +20,6 @@
 		"ls_adls_gen2_properties_typeProperties_url": {
 			"value": "https://adlsglobstorageaccdev.dfs.core.windows.net/"
 		},
-		"ls_key_vault_properties_typeProperties_baseUrl": {
-			"value": "https://kv-caresyncdev1301.vault.azure.net/"
-		},
 		"containerUri": {
 			"value": ""
 		},
