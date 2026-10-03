@@ -198,6 +198,42 @@
 					"referenceName": "LS_adb_caresync_dev",
 					"type": "LinkedServiceReference"
 				}
+			},
+			{
+				"name": "Update_Failed_Status",
+				"type": "Script",
+				"dependsOn": [
+					{
+						"activity": "NB_Bronze_to_silver",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"linkedServiceName": {
+					"referenceName": "LS_AzureSqlDatabase",
+					"type": "LinkedServiceReference"
+				},
+				"typeProperties": {
+					"scripts": [
+						{
+							"type": "Query",
+							"text": {
+								"value": "update  ctrl.audit_log\n  set status = 'FAILED', end_time=SYSUTCDATETIME()\n  where adf_run_id= '@{pipeline().parameters.adf_run_id}' and table_id=@{item().table_id};",
+								"type": "Expression"
+							}
+						}
+					],
+					"scriptBlockExecutionTimeout": "02:00:00"
+				}
 			}
 		],
 		"parameters": {
