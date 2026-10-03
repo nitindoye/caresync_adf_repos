@@ -120,6 +120,84 @@
 						}
 					}
 				]
+			},
+			{
+				"name": "NB_Landing_to_Bronze",
+				"type": "DatabricksNotebook",
+				"dependsOn": [
+					{
+						"activity": "src_to_landing_ingestion",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"notebookPath": "/caresync-repo/caresync-adb-repo/01_landing_to_bronze",
+					"baseParameters": {
+						"source_system": {
+							"value": "@activity('Read_Table_Details').output.firstRow.source_system",
+							"type": "Expression"
+						},
+						"table_name": {
+							"value": "@activity('Read_Table_Details').output.firstRow.bronze_table_name",
+							"type": "Expression"
+						},
+						"landing_timestamp": {
+							"value": "@variables('start_time')",
+							"type": "Expression"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "LS_adb_caresync_dev",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "NB_Bronze_to_silver",
+				"type": "DatabricksNotebook",
+				"dependsOn": [
+					{
+						"activity": "NB_Landing_to_Bronze",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"notebookPath": "/caresync-repo/caresync-adb-repo/02_bronze_to_silver",
+					"baseParameters": {
+						"landing_timestamp": {
+							"value": "@variables('start_time')",
+							"type": "Expression"
+						},
+						"table_name": {
+							"value": "@activity('Read_Table_Details').output.firstRow.silver_table_name",
+							"type": "Expression"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "LS_adb_caresync_dev",
+					"type": "LinkedServiceReference"
+				}
 			}
 		],
 		"parameters": {
