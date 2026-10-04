@@ -200,7 +200,7 @@
 				}
 			},
 			{
-				"name": "Update_Failed_Status",
+				"name": "Update_Success_Status",
 				"type": "Script",
 				"dependsOn": [
 					{
