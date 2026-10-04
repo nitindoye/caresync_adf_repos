@@ -227,7 +227,7 @@
 						{
 							"type": "Query",
 							"text": {
-								"value": "update  ctrl.audit_log\n  set status = 'FAILED', end_time=SYSUTCDATETIME()\n  where adf_run_id= '@{pipeline().parameters.adf_run_id}' and table_id=@{item().table_id};",
+								"value": "UPDATE ctrl.audit_log\nSET status='SUCCESS', end_time= SYSUTCDATETIME(),  records_written=@{activity('NB_Bronze_to_silver').output.runOutput}\nWHERE adf_run_id= '@{pipeline().parameters.adf_run_id}' and table_id = @{pipeline().parameters.table_id}",
 								"type": "Expression"
 							}
 						}
@@ -242,7 +242,8 @@
 				"defaultValue": "1"
 			},
 			"adf_run_id": {
-				"type": "string"
+				"type": "string",
+				"defaultValue": "a1"
 			}
 		},
 		"variables": {
