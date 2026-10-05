@@ -48,6 +48,7 @@
 						"value": "@activity('Read_source_tbl_list').output.value",
 						"type": "Expression"
 					},
+					"isSequential": false,
 					"activities": [
 						{
 							"name": "Exec_ingest_from_src_to_landing",
@@ -158,7 +159,7 @@
 			},
 			"adf_run_id": {
 				"type": "string",
-				"defaultValue": "a3"
+				"defaultValue": "a4"
 			}
 		},
 		"variables": {
