@@ -7,9 +7,21 @@
 			"metadata": "Data Factory name",
 			"defaultValue": "data-factory-glob-dev"
 		},
-		"LS_PostgreSql_password": {
-			"type": "secureString",
-			"metadata": "Secure string for 'password' of 'LS_PostgreSql'"
+		"AzureKeyVault1_properties_typeProperties_baseUrl": {
+			"type": "string",
+			"defaultValue": "https://kv-healthcareys.vault.azure.net/"
+		},
+		"LS_AzureSqlDatabase_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "glob-dev-server.database.windows.net"
+		},
+		"LS_AzureSqlDatabase_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "glob_dev"
+		},
+		"LS_AzureSqlDatabase_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "glob-dev-admin"
 		},
 		"LS_PostgreSql_properties_typeProperties_server": {
 			"type": "string",
@@ -22,6 +34,10 @@
 		"LS_PostgreSql_properties_typeProperties_username": {
 			"type": "string",
 			"defaultValue": "neondb_owner"
+		},
+		"LS_adb_caresync_dev_properties_typeProperties_existingClusterId": {
+			"type": "string",
+			"defaultValue": "0927-070506-56jngqe3"
 		},
 		"ls_adls_gen2_properties_typeProperties_url": {
 			"type": "string",
@@ -54,8 +70,20 @@
 					"factoryName": {
 						"value": "[parameters('factoryName')]"
 					},
-					"LS_PostgreSql_password": {
-						"value": "[parameters('LS_PostgreSql_password')]"
+					"AzureKeyVault1_properties_typeProperties_baseUrl": {
+						"value": "[parameters('AzureKeyVault1_properties_typeProperties_baseUrl')]"
+					},
+					"ls_adls_gen2_properties_typeProperties_url": {
+						"value": "[parameters('ls_adls_gen2_properties_typeProperties_url')]"
+					},
+					"LS_AzureSqlDatabase_properties_typeProperties_server": {
+						"value": "[parameters('LS_AzureSqlDatabase_properties_typeProperties_server')]"
+					},
+					"LS_AzureSqlDatabase_properties_typeProperties_database": {
+						"value": "[parameters('LS_AzureSqlDatabase_properties_typeProperties_database')]"
+					},
+					"LS_AzureSqlDatabase_properties_typeProperties_userName": {
+						"value": "[parameters('LS_AzureSqlDatabase_properties_typeProperties_userName')]"
 					},
 					"LS_PostgreSql_properties_typeProperties_server": {
 						"value": "[parameters('LS_PostgreSql_properties_typeProperties_server')]"
@@ -66,8 +94,8 @@
 					"LS_PostgreSql_properties_typeProperties_username": {
 						"value": "[parameters('LS_PostgreSql_properties_typeProperties_username')]"
 					},
-					"ls_adls_gen2_properties_typeProperties_url": {
-						"value": "[parameters('ls_adls_gen2_properties_typeProperties_url')]"
+					"LS_adb_caresync_dev_properties_typeProperties_existingClusterId": {
+						"value": "[parameters('LS_adb_caresync_dev_properties_typeProperties_existingClusterId')]"
 					}
 				}
 			},

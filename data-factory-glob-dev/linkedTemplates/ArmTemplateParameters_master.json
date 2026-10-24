@@ -5,8 +5,17 @@
 		"factoryName": {
 			"value": "data-factory-glob-dev"
 		},
-		"LS_PostgreSql_password": {
-			"value": ""
+		"AzureKeyVault1_properties_typeProperties_baseUrl": {
+			"value": "https://kv-healthcareys.vault.azure.net/"
+		},
+		"LS_AzureSqlDatabase_properties_typeProperties_server": {
+			"value": "glob-dev-server.database.windows.net"
+		},
+		"LS_AzureSqlDatabase_properties_typeProperties_database": {
+			"value": "glob_dev"
+		},
+		"LS_AzureSqlDatabase_properties_typeProperties_userName": {
+			"value": "glob-dev-admin"
 		},
 		"LS_PostgreSql_properties_typeProperties_server": {
 			"value": "ep-dark-rain-azys49f0-pooler.c-3.ap-southeast-1.aws.neon.tech"
@@ -16,6 +25,9 @@
 		},
 		"LS_PostgreSql_properties_typeProperties_username": {
 			"value": "neondb_owner"
+		},
+		"LS_adb_caresync_dev_properties_typeProperties_existingClusterId": {
+			"value": "0927-070506-56jngqe3"
 		},
 		"ls_adls_gen2_properties_typeProperties_url": {
 			"value": "https://adlsglobstorageaccdev.dfs.core.windows.net/"
