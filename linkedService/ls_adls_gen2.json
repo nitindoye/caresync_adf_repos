@@ -5,6 +5,7 @@
 		"type": "AzureBlobFS",
 		"typeProperties": {
 			"url": "https://adlsglobstorageaccdev.dfs.core.windows.net/"
-		}
+		},
+		"description": "linked_service_for_ADLS"
 	}
 }
