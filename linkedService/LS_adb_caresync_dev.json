@@ -11,7 +11,7 @@
 					"referenceName": "AzureKeyVault1",
 					"type": "LinkedServiceReference"
 				},
-				"secretName": "adb-access-token"
+				"secretName": "adb-access-tokens"
 			},
 			"existingClusterId": "0927-070506-56jngqe3"
 		}
